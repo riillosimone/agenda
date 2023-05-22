@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotNull;
 
-import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

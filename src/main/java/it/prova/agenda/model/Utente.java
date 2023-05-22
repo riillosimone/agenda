@@ -18,6 +18,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "utente")
 public class Utente {
@@ -196,6 +197,22 @@ public class Utente {
 
 	public void setAgende(Set<Agenda> agende) {
 		this.agende = agende;
+	}
+	
+	public boolean isAdmin() {
+		for (Ruolo ruoloItem : ruoli) {
+			if (ruoloItem.getCodice().equals(Ruolo.ROLE_ADMIN))
+				return true;
+		}
+		return false;
+	}
+
+	public boolean isAttivo() {
+		return this.stato != null && this.stato.equals(StatoUtente.ATTIVO);
+	}
+
+	public boolean isDisabilitato() {
+		return this.stato != null && this.stato.equals(StatoUtente.DISABILITATO);
 	}
 
 }
