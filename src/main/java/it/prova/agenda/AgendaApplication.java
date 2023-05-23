@@ -83,20 +83,7 @@ public class AgendaApplication implements CommandLineRunner {
 			utenteServiceInstance.changeUserAbilitation(classicUser2.getId());
 		}
 		
-		String descrizioneAgenda1 = "La mia prima agenda";
-		Agenda primaAgenda = agendaServiceInstance.findByDescrizione(descrizioneAgenda1);
-		
-		Utente simone = new Utente("simoneriillo", "ciao", "Simone","Riillo", "simone@prova.it",LocalDate.now());
-		utenteServiceInstance.inserisciNuovo(simone);
-		
-		simone.getRuoli().add(ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", Ruolo.ROLE_ADMIN));
-		utenteServiceInstance.changeUserAbilitation(simone.getId());
-		
-		if (primaAgenda == null) {
-			primaAgenda = new Agenda(descrizioneAgenda1, LocalDateTime.of(2000, 05, 19, 19, 0),LocalDateTime.of(2020, 12, 31, 12, 0),simone);
-			agendaServiceInstance.inserisciNuovo(primaAgenda);
-		}
-		
+	
 
 	}
 

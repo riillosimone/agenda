@@ -71,6 +71,14 @@ public class AgendaServiceImpl  implements AgendaService{
 		
 		return repository.findByDescrizione(descrizione);
 	}
+
+	@Override
+	public List<Agenda> listAllYourElements(String username, boolean eager) {
+		if (eager) {
+			return repository.findAllAgendaEagerByUsername(username);
+		}
+		return repository.findAllAgendaByUsername(username);
+	}
 	
 	
 }

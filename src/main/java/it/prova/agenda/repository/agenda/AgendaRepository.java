@@ -14,7 +14,13 @@ public interface AgendaRepository extends CrudRepository<Agenda,Long>,CustomAgen
 	
 	List<Agenda> findAllByDescrizione(String descrizione);
 	
-	@Query("select a from Agenda a join fetch a.utente")
+	@Query("select a from Agenda a join fetch a.utente u where u.username like ?1")
+	List<Agenda> findAllAgendaEagerByUsername(String username);
+	
+	@Query("select a from Agenda a where a.utente.username like ?1")
+	List<Agenda> findAllAgendaByUsername(String username);
+	
+	@Query("select a from Agenda a join fetch a.utente u ")
 	List<Agenda> findAllAgendaEager();
 	
 	Agenda findByDescrizione(String descrizione);

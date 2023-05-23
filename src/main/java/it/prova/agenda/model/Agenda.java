@@ -22,7 +22,7 @@ public class Agenda {
 	private Long id;
 	@Column(name = "descrizione")
 	private String descrizione;
-	@Column(name = "dataoraInizio")
+	@Column(name = "dataOraInizio")
 	private LocalDateTime dataOraInizio;
 	@Column(name = "dataOraFine")
 	private LocalDateTime dataOraFine;

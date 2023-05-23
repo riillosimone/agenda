@@ -6,6 +6,8 @@ import it.prova.agenda.model.Agenda;
 
 public interface AgendaService {
 	
+	List<Agenda> listAllYourElements(String username, boolean eager);
+	
 	List<Agenda> listAllElements(boolean eager);
 	
 	Agenda caricaSingoloElemento(Long id);
