@@ -44,10 +44,10 @@ public class AgendaController {
 		// estraggo le info dal principal
 		Utente utenteLoggato = utenteService.findByUsername(username);
 		if (!utenteLoggato.isAdmin()) {
-			return AgendaDTO.createAgendaDTOListFromModelList(agendaService.listAllYourElements(username, false), true);
+			return AgendaDTO.createAgendaDTOListFromModelList(agendaService.listAllYourElements(username, false));
 		}
 		
-		return AgendaDTO.createAgendaDTOListFromModelList(agendaService.listAllElements(false), true);
+		return AgendaDTO.createAgendaDTOListFromModelList(agendaService.listAllElements(false));
 		
 	}
 
@@ -65,7 +65,7 @@ public class AgendaController {
 //		if (!utenteLoggato.isAdmin() && agendaInserita.getUtente()!= utenteLoggato) {
 //			throw new UtenteNonAutorizzatoException("Attenzione! Non hai l'autorizzazione per visualizzare questo elemento");
 //		}
-		return AgendaDTO.buildAgendaDTOFromModel(agendaInserita, false);
+		return AgendaDTO.buildAgendaDTOFromModel(agendaInserita);
 	}
 	
 	@GetMapping("/{id}")
@@ -81,7 +81,7 @@ public class AgendaController {
 		if (!utenteLoggato.isAdmin() && agenda.getUtente()!= utenteLoggato) {
 			throw new UtenteNonAutorizzatoException("Attenzione! Non hai l'autorizzazione per visualizzare questo elemento");
 		}
-		return AgendaDTO.buildAgendaDTOFromModel(agenda, true);
+		return AgendaDTO.buildAgendaDTOFromModel(agenda);
 	}
 	
 	@PutMapping("/{id}")
@@ -99,7 +99,7 @@ public class AgendaController {
 		}
 		agendaInput.setId(id);
 		Agenda agendaAggiornata = agendaService.aggiorna(agendaInput.buildAgendaModel());
-		return AgendaDTO.buildAgendaDTOFromModel(agendaAggiornata, true);
+		return AgendaDTO.buildAgendaDTOFromModel(agendaAggiornata);
 	}
 	
 	@DeleteMapping("/{id}")
